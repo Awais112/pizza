@@ -1,0 +1,92 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@4.1.2
+3 info using node@v7.7.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'E:\\owaisdata\\online pizza ordering system',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\Dell\AppData\Roaming\npm-cache\testnodeapp\1.0.0\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\Dell\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle testnodeapp@1.0.0~prepublish: testnodeapp@1.0.0
+11 silly lifecycle testnodeapp@1.0.0~prepublish: no script for prepublish, continuing
+12 info lifecycle testnodeapp@1.0.0~prepare: testnodeapp@1.0.0
+13 silly lifecycle testnodeapp@1.0.0~prepare: no script for prepare, continuing
+14 verbose tar pack [ 'C:\\Users\\Dell\\AppData\\Roaming\\npm-cache\\testnodeapp\\1.0.0\\package.tgz',
+14 verbose tar pack   'E:\\owaisdata\\online pizza ordering system' ]
+15 verbose tarball C:\Users\Dell\AppData\Roaming\npm-cache\testnodeapp\1.0.0\package.tgz
+16 verbose folder E:\owaisdata\online pizza ordering system
+17 verbose addLocalTarball adding from inside cache C:\Users\Dell\AppData\Roaming\npm-cache\testnodeapp\1.0.0\package.tgz
+18 verbose correctMkdir C:\Users\Dell\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+19 silly cache afterAdd testnodeapp@1.0.0
+20 verbose afterAdd C:\Users\Dell\AppData\Roaming\npm-cache\testnodeapp\1.0.0\package\package.json not in flight; writing
+21 verbose correctMkdir C:\Users\Dell\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+22 verbose afterAdd C:\Users\Dell\AppData\Roaming\npm-cache\testnodeapp\1.0.0\package\package.json written
+23 silly publish { name: 'testnodeapp',
+23 silly publish   version: '1.0.0',
+23 silly publish   description: 'dd',
+23 silly publish   main: 'app.js',
+23 silly publish   scripts: { start: 'node app.js' },
+23 silly publish   author: { name: 'jamasheed' },
+23 silly publish   license: 'ISC',
+23 silly publish   dependencies:
+23 silly publish    { 'body-parser': '^1.18.3',
+23 silly publish      bootstrap: '^4.1.3',
+23 silly publish      'cookie-parser': '^1.4.3',
+23 silly publish      ejs: '^2.6.1',
+23 silly publish      express: '^4.16.3',
+23 silly publish      'express-session': '^1.15.6',
+23 silly publish      mongodb: '^3.1.4',
+23 silly publish      mongoose: '^5.2.10',
+23 silly publish      multer: '^1.3.1',
+23 silly publish      path: '^0.12.7' },
+23 silly publish   readme: 'ERROR: No README data found!',
+23 silly publish   _id: 'testnodeapp@1.0.0',
+23 silly publish   _shasum: 'bf63a670c9f6d30b3c2f54235702224ed7d8f643',
+23 silly publish   _from: '.' }
+24 info lifecycle testnodeapp@1.0.0~prepublishOnly: testnodeapp@1.0.0
+25 silly lifecycle testnodeapp@1.0.0~prepublishOnly: no script for prepublishOnly, continuing
+26 verbose getPublishConfig undefined
+27 silly mapToRegistry name testnodeapp
+28 silly mapToRegistry using default registry
+29 silly mapToRegistry registry https://registry.npmjs.org/
+30 silly mapToRegistry data Result {
+30 silly mapToRegistry   raw: 'testnodeapp',
+30 silly mapToRegistry   scope: null,
+30 silly mapToRegistry   escapedName: 'testnodeapp',
+30 silly mapToRegistry   name: 'testnodeapp',
+30 silly mapToRegistry   rawSpec: '',
+30 silly mapToRegistry   spec: 'latest',
+30 silly mapToRegistry   type: 'tag' }
+31 silly mapToRegistry uri https://registry.npmjs.org/testnodeapp
+32 verbose publish registryBase https://registry.npmjs.org/
+33 silly publish uploading C:\Users\Dell\AppData\Roaming\npm-cache\testnodeapp\1.0.0\package.tgz
+34 verbose stack Error: auth required for publishing
+34 verbose stack     at CachingRegistryClient.publish (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\publish.js:30:14)
+34 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\publish.js:137:14
+34 verbose stack     at mapToRegistry (C:\Program Files\nodejs\node_modules\npm\lib\utils\map-to-registry.js:62:3)
+34 verbose stack     at publish_ (C:\Program Files\nodejs\node_modules\npm\lib\publish.js:108:3)
+34 verbose stack     at Array.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\bind-actor.js:15:8)
+34 verbose stack     at LOOP (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:15:14)
+34 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:18:7
+34 verbose stack     at done (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:132:5)
+34 verbose stack     at LOOP (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:7:26)
+34 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:18:7
+35 verbose cwd E:\owaisdata\online pizza ordering system
+36 error Windows_NT 10.0.17134
+37 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+38 error node v7.7.1
+39 error npm  v4.1.2
+40 error code ENEEDAUTH
+41 error need auth auth required for publishing
+42 error need auth You need to authorize this machine using `npm adduser`
+43 verbose exit [ 1, true ]

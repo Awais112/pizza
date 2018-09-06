@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link href="/stylesheet/view.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online Pizza Order System</title>
+<meta charset="UTF-8">
+<title>view Pizza</title>
+
+<link href="/stylesheet/view.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
+</script>
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: rgb(235, 10, 10);
+    }
+    
+    li {
+        float: left;
+        border-right:1px solid #bbb;
+    }
+    
+    li:last-child {
+        border-right: none;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .active {
+        background-color: rgb(5, 104, 8);
+    }
+    </style>
+    
+</head>
+<body  >
+            
+        
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+  
+    </div> 
+
+    
+<div>
+<div >
+
+
+
+          
+<!--<center><font size="10" color="red" style="background-color:#04171A;">Onlie Pizza Order System</font></center>-->
+
+<div>
+        <div  > <img src="images/piz1.jpeg"  height="5%" width="10%" margin=0px>
+                 <img src="images/pp4.jpg"  height="20%" width="20%"  align="middle">
+                 <img src="images/piz1.jpeg"  height="5%" width="10%" align="right">
+        
+          </div>
+          <ul>
+            <li class="active"><a href="/secret">Add Pizza<span class="sr-only">(current)</span></a></li>
+            <li ><a href="/viewpizza">View Pizza</a></li>
+            <li  ><a href="/employee">Add Employee</a></li>
+            <li ><a href="/viewemp">View Employee</a></li>
+            <li><a href="/notification"  ><span class="glyphicon glyphicon-bell" ></span></a>
+            <li class="Logout" style="float:right"><a href="/">Logout</a></li>
+            
+             
+                </ul>
+        
+
+
+
+
+
+
+<table id="pizzatable" class="responstable " style="width:100%;  margin-right:50px;" >
+
+    <tr  id = "rowid" >
+   
+    <th  width="5%" name="name" id="name">Pizza Name</th>
+    <th width="5%" name="price" id="price">Price</th>
+    <th width="5%" name="size" id="size">Size</th>
+    <th width="5%" name="description" id="description">Description</th>
+    <th width="5%" name="empsal" id="empsal">Action View</th>
+    <th width="5%">Action Delete</th>
+    <th width="5%">Action Update</th>
+
+  </tr>
+<tbody id="customer-rows">
+ 
+</tbody>
+
+ </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+<!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Pizza Detail</h4>
+        </div>
+        <div class="modal-body">
+          <form method="POST" >  
+
+              
+                      <label>Pizza Name</label>  
+                      <input  name="field1" id="field1" class="form-control" />  
+                      <br />  
+
+                      <label>Price</label>  
+                      <input type="text" name="field2" id="field2" class="form-control"  />  
+                      <br />  
+
+                      <label>Size</label>  
+                      <input type="text" name="field3" id="field3" class="form-control" />  
+                      <br />  
+
+                      <label>Description</label>  
+                      <input type="text" name="field4" id="field4" class="form-control"  />  
+                      <br />  
+
+                      <label>Image</label>  
+                      <input type="text" name="field5" id="field5" class="form-control"  />  
+                      <br />
+
+
+                      <input type="hidden" name="pizza_id" id="pizza_id" />  
+                      <button id="button_1" value="val_1" name="but1">Update</button>
+                 </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+
+<script>
+    $(document).ready(function() {
+      $("#button_1").click(function(e) {
+    e.preventDefault();
+    var name = $("#field1").val();
+     console.log(name);
+    var price = $("#field2").val();
+     console.log(price);
+    var size = $("#field3").val();
+     console.log(size);
+    var description = $("#field4").val();
+     console.log(description);
+   
+    var id = $("#pizza_id").val();
+    console.log(id);
+    
+
+        var dataForm = 'name=' + name + '&price=' + price + '&size=' +size+ '&description=' + description +  '&id=' + id;
+  
+    $.ajax({
+        type: 'POST',
+        url: '/updatepizza/'+id,
+        data: dataForm,
+        success: function(html){
+            if(html == "success"){
+               // $('#emptable').dataTable().reload();
+                $('#add_data_Modal1').modal('hide');
+                $('#add_data_Modal1').modal('toggle');
+                res.render('viewpizza');
+            }
+        }
+        });
+    
+    });
+    });
+    </script>
+
+
+
+
+<script>
+
+ populateTable();
+function populateTable(){
+       var mydata;
+        var userdata;
+      $(document).ready(function(){
+        console.log('Unable to put data'); 
+
+       
+                $.getJSON("http://localhost:3000/getdata", function(data){
+                    console.log(data);
+           
+                  $.each(data, function(i, field){
+                   
+                       $('#pizzatable').append('<tr  ><td>'+field.name+'</td><td>'+field.price+
+                        '</td><td>'+field.size+'</td><td>'+field.description+'</td><td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '">View</a></td> <td><a href="#" id="btn1" class="deletepizza btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '" >Edit</a></td> </tr>' 
+            
+                    );
+
+              
+                        });
+                     
+        
+                        
+     
+                })
+               
+            });
+          }
+
+</script>
+
+<script>
+    $(document).ready(function() {
+      $("#button_1").click(function(e) {
+    e.preventDefault();
+    var name = $("#field1").val();
+    var price = $("#field2").val();
+    var size = $("#field3").val();
+    var Description = $("#field4").val();
+    var image = $("#field5").val();
+    
+
+    var id = $("#pizza_id").val();
+
+    var dataForm = 'name=' + name + '&price=' + price + '&size=' +size+ '&description=' + description + '&image=' + image +  '&id=' + id;
+    
+    $.ajax({
+        type: 'POST',
+        url: '/updatepizza/'+id,
+        data: dataForm,
+        success: function(html){
+            if(html == "success"){
+               // $('#emptable').dataTable().reload();
+                $('#add_data_Modal1').modal('hide');
+                $('#add_data_Modal1').modal('toggle');
+                res.render('viewepizza');
+            }
+        }
+        });
+    
+    });
+    });
+    </script>
+
+    <script>
+$(document).ready(function() {
+  $("#button_1").click(function(e) {
+e.preventDefault();
+var name = $("#field1").val();
+var price = $("#field2").val();
+var size = $("#field3").val();
+var description = $("#field4").val();
+var id = $("#pizza_id").val();
+
+console.log(title);
+var dataForm = 'name=' + name + '&price=' + price + '&size=' +size+ '&description=' + description +  '&id=' + id;
+
+$.ajax({
+    type: 'POST',
+    url: '/edit/'+id,
+    data: dataForm,
+    success: function(html){
+        if(html == "success"){
+           // $('#emptable').dataTable().reload();
+            $('#add_data_Modal1').modal('hide');
+            $('#add_data_Modal1').modal('toggle');
+            res.render('viewevents');
+        }
+    }
+    });
+
+});
+});
+</script>
+
+
+<script>
+
+     
+  $('#pizzatable tbody').on('click','td a.updatecustomer', function updatecustomer(event) {
+  
+    event.preventDefault();
+  
+    var dmJSON = "http://localhost:3000/getdata";
+    var pizza_id = $(this).attr('rel'); 
+    data = {pizza_id:pizza_id}
+  
+   jQuery.getJSON( dmJSON, function(data) {
+    console.log(data);
+      var idx=1;
+      $.each(data, function(i, f) {
+  
+      if(f._id == pizza_id){
+         $('#field1').val(f.name)
+         $('#field2').val(f.price)
+         $('#field3').val(f.size)
+         $('#field4').val(f.description)
+         $('#field5').val(f.image)
+
+        
+         $('#pizza_id').val(f._id);
+      
+  
+         $('#myModal').modal('show'); 
+          
+      }
+      });
+   });
+  
+  
+  
+   
+  });
+
+
+    
+$('#pizzatable tbody').on('click', 'td a.deletepizza', function deletepizza(event){
+
+
+    event.preventDefault();
+    // Pop up a confirmation dialog
+    var confirmation = confirm('Are you sure you want to delete this user?');
+    // Check and make sure the user confirmed
+    if (confirmation === true) {
+        // If they did, do our delete
+        $.ajax({
+            method:'DELETE',
+            type: 'DELETE',
+            url: '/pizza/'  + $(this).attr('rel'),
+
+        }).done(function( response) {
+          
+           
+          
+                      // Check for a successful (blank) response
+          
+                      if (response.msg == '') {
+                       
+          
+                      }
+          
+                      else {
+                     
+                        alert('sucessfully deleted!');
+                        location.reload();
+                        
+          
+                      }
+
+});
+}else {
+
+// If they said no to the confirm, do nothing
+
+        return false;
+
+    }
+})
+
+
+ 
+  </script>
+
+    
+
+<div class="footer">
+    <p></p>
+  </div>
+  
+</html>
