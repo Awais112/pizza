@@ -110,7 +110,7 @@ app.get('/order', function(req,res){
       app.delete('/pizza/:id', pizza.delete);
    app.post('/updatepizza/:id', pizza.editpizza);
 
-  
+ app.use('/uploads', express.static('uploads'));  
    
     
 
