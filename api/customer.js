@@ -1,58 +1,32 @@
 const exprss = require('express');
 const customer = require('../models/customer.js');
-var app = exprss();
 
 
 
-// exports.openhtc =function(req,res){
-//     res.render("htc");
-// }
-
-// exports.viewhtc =function(req,res){
-
-//     htc.find({}).exec(function(err,result){
-//         if(err){
-//             res.status(500).send({error:err});
-//         }
-//         else{
-//             res.render("viewhtc",{htc:result});
-//         }
-//     });
-// }
-// const multer = require('multer');
-// const uploads = multer({dest: './uploads'});
-// var storage = multer.diskStorage({
-//     destination: function (req, file, callback) {
-//       callback(null, './uploads')
-//     },
-//     filename: function (req, file, callback) {
-//       callback(null, Date.now() + file.originalname)
-//     }
-//   })
-
-  exports.add= function(req, res){
+exports.add= function(req, res){
     let newCustomer = new customer({
-        name: req.body.name,
+        pizzaname: req.body.pizzaname,
+        customername: req.body.customername,
         cellno: req.body.cellno,
         address: req.body.address,
-        email: req.body.email
-        
+        pizzasize: req.body.pizzasize,
+        otheritems: req.body.otheritems
     });
+    console.log(customer);
 
     newCustomer.save((err, customer)=>{
         if(err){
             res.json({msg: 'Failed to add the customer'});
         }
         else{
-            res.json({msg: 'customer is added successfully'});
+            // res.render("transport",{transport:route});
+           res.json({msg: 'customer is added successfully'});
         }
     });
 }
 
 
-
-
-
+//function is used to get all routes 
 exports.getAll = function (req, res) {
     customer
         .find({})
@@ -69,5 +43,3 @@ exports.getAll = function (req, res) {
         })
 }
 
-
- 

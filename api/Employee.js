@@ -6,7 +6,7 @@ var url   = "mongodb://awais12:a03060302@ds113732.mlab.com:13732/pizzadb";
     let newEmployee = new Employee({
         name: req.body.name,
         cellno: req.body.cellno,
-        address:req.body.addr
+        address:req.body.address
         
         
     });

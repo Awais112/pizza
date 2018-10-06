@@ -50,10 +50,14 @@ module.exports = function(app) {
     app.get('/adminloginpage', function(req,res){
       res.render('adminlogin');
   });
-  
+
   
   app.get('/viewpizza', function(req,res){
     res.render('viewpizza');
+});
+
+ app.get('/viewitem', function(req,res){
+    res.render('viewotherproduct');
 });
 
 app.get('/viewemp', function(req,res){
@@ -70,6 +74,10 @@ app.get('/viewemp', function(req,res){
 app.get('/order', function(req,res){
         res.render('order');
     });
+
+    app.get('/otherproduct', function(req,res){
+        res.render('otherproduct');
+    });
       
 
 
@@ -82,9 +90,7 @@ app.get('/order', function(req,res){
   });
 
 
-  var Employee = require('../api/Employee.js');
-  app.post('/insertEmployee', Employee.add);
-   app.get('/empdata', Employee.getAll);
+  
 
 
     
@@ -115,12 +121,28 @@ app.get('/order', function(req,res){
     
 
 
+var Employee = require('../api/Employee.js');
+  app.post('/insertEmployee', Employee.add);
+   app.get('/empdata', Employee.getAll);
+   app.delete('/emp/:id', Employee.deleteEmp);
+   app.post('/updateemp/:id', Employee.editemployee);
 
 
 
+var customer = require('../api/customer.js');
+  app.post('/addcustomer', customer.add);
+   app.get('/customerdata', customer.getAll);
+  //  app.delete('/deletecustomer/:id', customer.deletecustomer);
+  //  app.post('/editcustomer/:id', customer.editcustomer);
 
 
 
+var otherproduct = require('../api/otherproduct.js');
+  app.post('/addotherproduct', otherproduct.add);
+   app.get('/otherproductdata', otherproduct.getAll);
+  //  app.get('/otherproduct/delete/:id', otherproduct.delete);
+   app.delete('/deleteotherproductdata/:id', otherproduct.delete);
+  app.post('/editotherproductdata/:id', otherproduct.edititems);
 
 
 } ;
