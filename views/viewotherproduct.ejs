@@ -161,11 +161,11 @@
     console.log(id);
     
 
-        var dataForm = 'name=' + items +   '&id=' + id;
+   var dataForm = 'items=' + items +   '&id=' + id;
   
     $.ajax({
         type: 'POST',
-        url: '/updateemp/'+id,
+        url: '/editotherproductdata/'+id,
         data: dataForm,
         success: function(html){
             if(html == "success"){
@@ -377,7 +377,7 @@ function populateTable(){
         console.log('Unable to put data'); 
 
        
-                $.getJSON("http://localhost:3000/otherproductdata", function(data){
+                $.getJSON("https://pizzaorderingystem.herokuapp.com/otherproductdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
@@ -476,7 +476,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "http://localhost:3000/getdata";
+    var dmJSON = "https://pizzaorderingystem.herokuapp.com/otherproductdata";
     var emp_id = $(this).attr('rel'); 
     data = {emp_id:emp_id}
   
@@ -486,7 +486,7 @@ $.ajax({
       $.each(data, function(i, f) {
   
       if(f._id == emp_id){
-         $('#field1').val(f.name)
+         $('#field1').val(f.items)
     
          $('#emp_id').val(f._id);
       

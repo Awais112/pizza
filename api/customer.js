@@ -26,6 +26,49 @@ exports.add= function(req, res){
 }
 
 
+exports.editCustomer = function(req,res){
+  
+    customer.findOne({_id:req.body.id}).exec(function(err,customer){
+        if(err){
+            console.log(customer);
+            res.status('500').send({message:'error'})
+           
+        }
+        else{
+            console.log(customer);
+            customer.pizzaname= req.body.pizzaname;
+            customer.customername= req.body.customername;
+            customer.cellno=req.body.cellno;
+            customer.address= req.body.address;
+            customer.pizzasize= req.body.pizzasize;
+            customer.otheritems=req.body.otheritems;
+           
+
+            customer.save(function(err,result){
+                if(err){
+                    res.status('500').send({message:'error found'})
+                }
+                else{
+                    res.render("order");
+                    console.log(result);
+                   
+                }
+            });
+        }
+    })
+  }
+
+exports.deletecustomer = function(req, res, next){
+    customer.remove({_id: req.params.id},function(err, result){
+         if(err){
+            res.json(err);
+       }
+       else{
+           res.json(result);
+        }
+    });
+ }
+
 //function is used to get all routes 
 exports.getAll = function (req, res) {
     customer

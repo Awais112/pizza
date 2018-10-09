@@ -132,8 +132,8 @@ var Employee = require('../api/Employee.js');
 var customer = require('../api/customer.js');
   app.post('/addcustomer', customer.add);
    app.get('/customerdata', customer.getAll);
-  //  app.delete('/deletecustomer/:id', customer.deletecustomer);
-  //  app.post('/editcustomer/:id', customer.editcustomer);
+    app.delete('/deletecustomer/:id', customer.deletecustomer);
+  app.post('/editcustomer/:id' , customer.editCustomer);
 
 
 
@@ -143,6 +143,14 @@ var otherproduct = require('../api/otherproduct.js');
   //  app.get('/otherproduct/delete/:id', otherproduct.delete);
    app.delete('/deleteotherproductdata/:id', otherproduct.delete);
   app.post('/editotherproductdata/:id', otherproduct.edititems);
+
+
+
+
+
+
+
+
 
 
 } ;

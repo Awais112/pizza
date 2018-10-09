@@ -116,6 +116,68 @@
 
  </table>
 
+
+
+
+ 
+<div class="container">
+    <!-- Trigger the modal with a button -->
+  <!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+  
+    <!-- Modal -->
+    <div class="modal fade" id="myModalupdate" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Employee Detail</h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" >  
+  
+                
+                        <label>Employee Name</label>  
+                        <input  name="field1" id="field1" class="form-control" />  
+                        <br />  
+  
+                        <label>Phone No</label>  
+                        <input type="text" name="field2" id="field2" class="form-control"  />  
+                        <br />  
+  
+                        <label>Address</label>  
+                        <input type="text" name="field3" id="field3" class="form-control" />  
+                        <br />  
+  
+                        
+  
+  
+                        <input type="hidden" name="emp_id" id="emp_id" />  
+                        <button id="button_1" value="val_1" name="but1">Update</button>
+                   </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container">
   <!-- Trigger the modal with a button -->
 <!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
@@ -150,7 +212,7 @@
 
 
                       <input type="hidden" name="emp_id" id="emp_id" />  
-                      <button id="button_1" value="val_1" name="but1">Update</button>
+                      
                  </form>
         </div>
         <div class="modal-footer">
@@ -398,14 +460,14 @@ function populateTable(){
         console.log('Unable to put data'); 
 
        
-                $.getJSON("http://localhost:3000/empdata", function(data){
+                $.getJSON("https://pizzaorderingystem.herokuapp.com/empdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
 
 
                                  $('#emptable').append('<tr  ><td>'+field.name+'</td><td>'+field.cellno+
-                        '</td><td>'+field.address+'</td><td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '">View</a></td> <td><a href="#" id="btn1" class="deleteemp btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '" >Edit</a></td> </tr>'
+                        '</td><td>'+field.address+'</td><td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '">View</a></td> <td><a href="#" id="btn1" class="deleteemp btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModalupdate" id="btn1"    rel="' + this._id + '" >Edit</a></td> </tr>'
 
 
                    
@@ -431,13 +493,13 @@ function populateTable(){
       $("#button_1").click(function(e) {
     e.preventDefault();
    var name = $("#field1").val();
-    var phone = $("#field2").val();
-    var Address = $("#field3").val();
+    var cellno = $("#field2").val();
+    var address = $("#field3").val();
 
    
     var id = $("#emp_id").val();
 
-    var dataForm = 'name=' + name + '&phone=' + phone + '&address=' +address+  '&id=' + id;
+    var dataForm = 'name=' + name + '&cellno=' + cellno + '&address=' +address+  '&id=' + id;
     
     $.ajax({
         type: 'POST',
@@ -498,7 +560,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "http://localhost:3000/getdata";
+    var dmJSON = "https://pizzaorderingystem.herokuapp.com/empdata";
     var emp_id = $(this).attr('rel'); 
     data = {emp_id:emp_id}
   
@@ -509,7 +571,7 @@ $.ajax({
   
       if(f._id == emp_id){
          $('#field1').val(f.name)
-         $('#field2').val(f.phone)
+         $('#field2').val(f.cellno)
          $('#field3').val(f.address)
          
         

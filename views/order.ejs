@@ -107,12 +107,12 @@
     <th  width="10%" name="name" id="name">Pizza Name</th>  
     <th  width="10%" name="custname" id="name">Customer Name</th>
     <th width="10%" name="phone" id="price">Phone No</th>
-    <th width="5%" name="otheritem" id="size">Other Item</th>
+    <th width="5%" name="address" id="size">Address</th>
     <th width="5%" name="size" id="size">Size</th>
-    <th width="20%" name="address" id="size">Address</th>
+    <th width="20%" name="otheritem" id="size">Other Items</th>
     <th width="5%" name="empsal" id="empsal">Action View</th>
     <th width="5%">Action Delete</th>
-    <th width="5%">Action Update</th>
+  
 
   </tr>
 <tbody id="customer-rows">
@@ -124,6 +124,58 @@
 
 
 
+ <div class="container">
+    <!-- Trigger the modal with a button -->
+  <!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+  
+    <!-- Modal -->
+    <div class="modal fade" id="myModalupdate" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Pizza Detail</h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" >  
+  
+                
+                        <label>Pizza Name</label>  
+                        <input  name="field1" id="field1" class="form-control" />  
+                        <br /> 
+                         <label>Customer Name</label>  
+                        <input  name="field2" id="field2" class="form-control" />  
+                        <br />  
+                         <label>Phone No</label>  
+                        <input    name="field3" id="field3" class="form-control" />  
+                        <br />  
+  
+                        <label>Address</label>  
+                        <input  name="field6" id="field6" class="form-control"  />  
+                       
+                        <br /> 
+  
+                        <label>Size</label>  
+                        <input type="text" name="field5" id="field5" class="form-control" />  
+                        <br />  
+                        <label>Other Item</label>  
+                        <input  name="field4" id="field4" class="form-control" />  
+                        <br />  
+                        <input type="hidden" name="pizza_id" id="pizza_id" />  
+                        <button id="button_1" value="val_1" name="but1">Update</button>
+                   </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
 
 
 
@@ -155,24 +207,25 @@
                       <input  name="field1" id="field1" class="form-control" />  
                       <br /> 
                        <label>Customer Name</label>  
-                      <input  name="field1" id="field1" class="form-control" />  
+                      <input  name="field2" id="field2" class="form-control" />  
                       <br />  
                        <label>Phone No</label>  
-                      <input  type="number"  name="field1" id="field1" class="form-control" />  
-                      <br />  
-                       <label>Other Item</label>  
-                      <input  name="field1" id="field1" class="form-control" />  
-                      <br /> 
-
-                      <label>Size</label>  
-                      <input type="text" name="field3" id="field3" class="form-control" />  
+                      <input    name="field3" id="field3" class="form-control" />  
                       <br />  
 
                       <label>Address</label>  
-                      <input type="text" name="field4" id="field4" class="form-control"  />  
+                      <input  name="field6" id="field6" class="form-control"  />  
+                     
+                      <br /> 
+
+                      <label>Size</label>  
+                      <input type="text" name="field5" id="field5" class="form-control" />  
+                      <br />  
+                      <label>Other Item</label>  
+                      <input  name="field4" id="field4" class="form-control" />  
                       <br />  
                       <input type="hidden" name="pizza_id" id="pizza_id" />  
-                      <button id="button_1" value="val_1" name="but1">Update</button>
+                     
                  </form>
         </div>
         <div class="modal-footer">
@@ -238,13 +291,13 @@ function populateTable(){
         console.log('Unable to put data'); 
 
        
-                $.getJSON("http://localhost:3000/getdata", function(data){
+                $.getJSON("https://pizzaorderingystem.herokuapp.com/customerdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
                    
-                       $('#pizzatable').append('<tr  ><td>'+field.name+'</td><td>'+field.price+
-                        '</td><td>'+field.size+'</td><td>'+field.description+'</td><td>'+field.name+'</td><td>'+field.name+'</td><td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '">View</a></td> <td><a href="#" id="btn1" class="deletepizza btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '" >Edit</a></td> </tr>' 
+                       $('#pizzatable').append('<tr  ><td>'+field.pizzaname+'</td><td>'+field.customername+
+                        '</td><td>'+field.cellno+'</td><td>'+field.address+'</td><td>'+field.pizzasize+'</td><td>'+field.otheritems+'</td><td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModalupdate" id="btn1"    rel="' + this._id + '">View</a></td> <td><a href="#" id="btn1" class="deletepizza btn btn-danger "   rel="' + this._id + '" >delete</a></td>  </tr>' 
             
                     );
 
@@ -298,18 +351,25 @@ function populateTable(){
 $(document).ready(function() {
   $("#button_1").click(function(e) {
 e.preventDefault();
-var name = $("#field1").val();
-var price = $("#field2").val();
-var size = $("#field3").val();
-var description = $("#field4").val();
+var pizzaname = $("#field1").val();
+var customername = $("#field2").val();
+var cellno = $("#field3").val();
+var otheritems = $("#field4").val();
+var pizzasize = $("#field5").val();
+var address = $("#field6").val();
+
+
+
+
+
 var id = $("#pizza_id").val();
 
-console.log(title);
-var dataForm = 'name=' + name + '&price=' + price + '&size=' +size+ '&description=' + description +  '&id=' + id;
+console.log(id);
+var dataForm = 'pizzaname=' + pizzaname + '&customername=' + customername + '&cellno=' +cellno+ '&address=' + address +'&pizzasize=' + pizzasize +'&otheritems=' + otheritems +  '&id=' + id;
 
 $.ajax({
     type: 'POST',
-    url: '/edit/'+id,
+    url: '/editcustomer/'+id,
     data: dataForm,
     success: function(html){
         if(html == "success"){
@@ -333,7 +393,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "http://localhost:3000/getdata";
+    var dmJSON = "https://pizzaorderingystem.herokuapp.com/customerdata";
     var pizza_id = $(this).attr('rel'); 
     data = {pizza_id:pizza_id}
   
@@ -343,17 +403,18 @@ $.ajax({
       $.each(data, function(i, f) {
   
       if(f._id == pizza_id){
-         $('#field1').val(f.name)
-         $('#field2').val(f.price)
-         $('#field3').val(f.size)
-         $('#field4').val(f.description)
-         $('#field5').val(f.image)
+         $('#field1').val(f.pizzaname)
+         $('#field2').val(f.customername)
+         $('#field3').val(f.cellno)
+         $('#field4').val(f.otheritems)
+         $('#field5').val(f.pizzasize)
+         $('#field6').val(f.address)
 
         
          $('#pizza_id').val(f._id);
       
   
-         $('#myModal').modal('show'); 
+         //$('#myModalupdate').modal('show'); 
           
       }
       });
@@ -378,7 +439,7 @@ $('#pizzatable tbody').on('click', 'td a.deletepizza', function deletepizza(even
         $.ajax({
             method:'DELETE',
             type: 'DELETE',
-            url: '/pizza/'  + $(this).attr('rel'),
+            url: '/deletecustomer/'  + $(this).attr('rel'),
 
         }).done(function( response) {
           
