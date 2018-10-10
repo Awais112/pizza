@@ -7,7 +7,8 @@ var customerSchema = new mongoose.Schema({
     cellno:{type:String, required:false},
     address:{type:String, required:false},
     pizzasize:{type:String, required:false},
-    otheritems:{type:String, required:false}
+    otheritems:{type:String, required:false},
+    time_date:{type:String, required:false}
         
 });
 

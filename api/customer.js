@@ -10,7 +10,8 @@ exports.add= function(req, res){
         cellno: req.body.cellno,
         address: req.body.address,
         pizzasize: req.body.pizzasize,
-        otheritems: req.body.otheritems
+        otheritems: req.body.otheritems,
+        time_date: req.body.time_date
     });
     console.log(customer);
 
@@ -42,6 +43,7 @@ exports.editCustomer = function(req,res){
             customer.address= req.body.address;
             customer.pizzasize= req.body.pizzasize;
             customer.otheritems=req.body.otheritems;
+            time_date.time_date=req.body.time_date
            
 
             customer.save(function(err,result){

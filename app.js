@@ -9,6 +9,9 @@ var MongoClient = require('mongodb').MongoClient;
 mongoose = require('mongoose');
 var path = require('path');
 
+const multer = require('multer');
+const uploads = multer({dest: './uploads'});
+
 var configDB = require('./config/database.js');
 
 
@@ -36,6 +39,7 @@ mongoose.connection.on( 'connected',function(){
 
 app.use(express.static(path.join(__dirname,'layout')));
 app.use(express.static(path.join(__dirname,'public')));
+app.use('/uploads', express.static('uploads'));
 
 
 
