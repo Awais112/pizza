@@ -16,7 +16,7 @@ exports.login = function(req, res){
         if(user){
             req.session.user = user;
             console.log('Successfully login');
-        res.render('main2');
+        res.render('secret');
     }
     console.log("Not redirect")
    // res.redirect('/');

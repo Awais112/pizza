@@ -85,8 +85,8 @@
             <li ><a href="/otherproduct">Add Product<span class="sr-only">(current)</span></a></li>
              <li  ><a href="/employee">Add Employee</a></li>
             <li ><a href="/viewpizza">View Pizza</a></li>
-              <li class="active"><a href="/viewemp">View Employee</a></li>
              <li><a href="/viewitem">View Poduct</a></li>
+             <li class="active"><a href="/viewemp">View Employee</a></li>
             <li><a href="/order"  ><span class="glyphicon glyphicon-bell" ></span></a>
             <li class="Logout" style="float:right"><a href="/">Logout</a></li>
             
@@ -460,7 +460,7 @@ function populateTable(){
         console.log('Unable to put data'); 
 
        
-                $.getJSON("https://pizzaorderingystem.herokuapp.com/empdata", function(data){
+                $.getJSON("http://localhost:3000/empdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
@@ -560,7 +560,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "https://pizzaorderingystem.herokuapp.com/empdata";
+    var dmJSON = "http://localhost:3000/empdata";
     var emp_id = $(this).attr('rel'); 
     data = {emp_id:emp_id}
   

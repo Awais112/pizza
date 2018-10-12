@@ -125,7 +125,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Employee Detail</h4>
+          <h4 class="modal-title">product Detail</h4>
         </div>
         <div class="modal-body">
           <form method="POST" >  
@@ -377,7 +377,7 @@ function populateTable(){
         console.log('Unable to put data'); 
 
        
-                $.getJSON("https://pizzaorderingystem.herokuapp.com/otherproductdata", function(data){
+                $.getJSON("http://localhost:3000/otherproductdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
@@ -476,7 +476,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "https://pizzaorderingystem.herokuapp.com/otherproductdata";
+    var dmJSON = "http://localhost:3000/otherproductdata";
     var emp_id = $(this).attr('rel'); 
     data = {emp_id:emp_id}
   
