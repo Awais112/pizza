@@ -377,7 +377,7 @@ function populateTable(){
         console.log('Unable to put data'); 
 
        
-                $.getJSON("http://localhost:3000/otherproductdata", function(data){
+                $.getJSON("https://pizzaorderingystem.herokuapp.com/otherproductdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
@@ -476,7 +476,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "http://localhost:3000/otherproductdata";
+    var dmJSON = "https://pizzaorderingystem.herokuapp.com/otherproductdata";
     var emp_id = $(this).attr('rel'); 
     data = {emp_id:emp_id}
   

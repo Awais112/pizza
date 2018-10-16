@@ -166,7 +166,7 @@
                         <input  name="field4" id="field4" class="form-control" />  
                         <br />  
                         <input type="hidden" name="pizza_id" id="pizza_id" />  
-                        <button id="button_1" value="val_1" name="but1">Update</button>
+                        <!--<button id="button_1" value="val_1" name="but1">Update</button>-->
                    </form>
           </div>
           <div class="modal-footer">
@@ -293,7 +293,7 @@ function populateTable(){
         console.log('Unable to put data'); 
 
        
-                $.getJSON("http://localhost:3000/customerdata", function(data){
+                $.getJSON("https://pizzaorderingystem.herokuapp.com/customerdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
@@ -391,7 +391,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "http://localhost:3000/customerdata";
+    var dmJSON = "https://pizzaorderingystem.herokuapp.com/customerdata";
     var pizza_id = $(this).attr('rel'); 
     data = {pizza_id:pizza_id}
   

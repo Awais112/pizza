@@ -109,7 +109,7 @@
     <th width="10%" name="price" id="price">Price</th>
     <th width="10%" name="size" id="size">Size</th>
     <th width="50%" name="description" id="description">Description</th>
-    <th width="5%" name="empsal" id="empsal">Action View</th>
+    <!--<th width="5%" name="empsal" id="empsal">Action View</th>-->
     <th width="5%">Action Delete</th>
     <th width="5%">Action Update</th>
 
@@ -166,8 +166,8 @@
                       <input type="text" name="field4" id="field4" class="form-control"  />  
                       <br />  
 
-                      <label>Image</label>  
-                      <input type="text" name="field5" id="field5" class="form-control"  />  
+                      <!--<label>Image</label>  -->
+                      <input type="hidden" name="field5" id="field5" class="form-control"  />  
                       <br />
 
 
@@ -187,6 +187,8 @@
 
 
 
+
+
 <script>
 
     $(document).ready(function() {
@@ -200,12 +202,14 @@
      console.log(size);
     var description = $("#field4").val();
      console.log(description);
-   
+    var imgurl = $("#field5").val();
+    console.log(imgurl);
     var id = $("#pizza_id").val();
     console.log(id);
     
 
-        var dataForm = 'name=' + name + '&price=' + price + '&size=' +size+ '&description=' + description +  '&id=' + id;
+        var dataForm = 'name=' + name + '&price=' + price + '&size=' +size+ '&description=' + description + '&imgurl=' + imgurl + '&id=' + id;
+
   
     $.ajax({
         type: 'POST',
@@ -238,14 +242,14 @@ function populateTable(){
         console.log('Unable to put data'); 
 
     //   pizzaorderingystem.herokuapp.com
-                $.getJSON("http://localhost:3000/getdata", function(data){
+                $.getJSON("https://pizzaorderingystem.herokuapp.com/getdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
                    
                        $('#pizzatable').append('<tr  ><td>'+field.name+'</td><td>'+field.price+
-                        '</td><td>'+field.size+'</td><td>'+field.description+'</td><td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '">View</a></td> <td><a href="#" id="btn1" class="deletepizza btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '" >Edit</a></td> </tr>' 
-            
+                        '</td><td>'+field.size+'</td><td>'+field.description+'</td></a></td> <td><a href="#" id="btn1" class="deletepizza btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '" >Edit</a></td> </tr>' 
+                                                                            //   <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '">View
                     );
 
               
@@ -294,7 +298,7 @@ function populateTable(){
     });
     </script>  -->
     
-    <script>
+    <!--<script>
 $(document).ready(function() {
   $("#button_1").click(function(e) {
 e.preventDefault();
@@ -302,10 +306,13 @@ var name = $("#field1").val();
 var price = $("#field2").val();
 var size = $("#field3").val();
 var description = $("#field4").val();
+var imgurl = $("#field5").val();
+    console.log(imgurl);
+
 var id = $("#pizza_id").val();
 
 console.log(title);
-var dataForm = 'name=' + name + '&price=' + price + '&size=' +size+ '&description=' + description +  '&id=' + id;
+var dataForm = 'name=' + name + '&price=' + price + '&size=' +size+ '&description=' + description + '&imageurl='+imgurl+ '&id=' + id;
 
 $.ajax({
     type: 'POST',
@@ -316,14 +323,14 @@ $.ajax({
            // $('#emptable').dataTable().reload();
             $('#add_data_Modal1').modal('hide');
             $('#add_data_Modal1').modal('toggle');
-            res.render('viewevents');
+            res.render('viewpizza');
         }
     }
     });
 
 });
 });
-</script>
+</script>-->
 
 
 <script>
@@ -333,7 +340,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "http://localhost:3000/getdata";
+    var dmJSON = "https://pizzaorderingystem.herokuapp.com/getdata";
     var pizza_id = $(this).attr('rel'); 
     data = {pizza_id:pizza_id}
   
@@ -347,7 +354,7 @@ $.ajax({
          $('#field2').val(f.price)
          $('#field3').val(f.size)
          $('#field4').val(f.description)
-         $('#field5').val(f.image)
+         $('#field5').val(f.imgurl)
 
         
          $('#pizza_id').val(f._id);

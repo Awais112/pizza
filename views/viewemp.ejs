@@ -105,7 +105,7 @@
     <th width="10%" name="phone" id="phone">Phone no</th>
     <th width="10%" name="address" id="address">Address</th>
     
-    <th width="5%" name="empsal" id="empsal">Action View</th>
+    <!--<th width="5%" name="empsal" id="empsal">Action View</th>-->
     <th width="5%">Action Delete</th>
     <th width="5%">Action Update</th>
 
@@ -166,11 +166,6 @@
     </div>
     
   </div>
-
-
-
-
-
 
 
 
@@ -264,191 +259,9 @@
     });
     </script>
 
-<!--
-<table id="emptable" class="responstable " style="width:100%;  margin-right:50px;" >
-
-    <tr  id = "rowid" >
-   
-    <th  width="25%" name="empname" id="empname">Employee Name</th>
-    <th width="20%" name="price" id="price">Phone No</th>
-        <th width="40%" name="size" id="size">Address</th>
-    <th width="5%" name="empsal" id="empsal">Action View</th>
-    <th width="5%">Action Delete</th>
-    <th width="5%">Action Update</th>
-
-  </tr>
-<tbody id="customer-rows">
- 
-</tbody>
-
- </table>
-
-
--->
-
-
-
-
-
-
 
  
-    <!--<div class="container"> -->
-  <!-- Trigger the modal with a button -->
-  <!-- Modal -->
-  <!--<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-     Modal content
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Employee Detail</h4>
-        </div>
-        <div class="modal-body">
-          <form method="POST" >  
-
-              
-                      <label>Employee Name</label>  
-                      <input  name="field1" id="field1" class="form-control" />  
-                      <br />  
-
-                      <label>Phone no</label>  
-                      <input type="number" name="field2" id="field2" class="form-control"  />  
-                      <br />  
-
-                      <label>Address</label>  
-                      <input type="text" name="field3" id="field3" class="form-control" />  
-                      <br /> 
-
-                      <input type="hidden" name="emp_id" id="emp_id" />  
-                      <button id="button_1" value="val_1" name="but1">Update</button>
-                 </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
   
-</div>-->
-<!--
-<script>
-
-    $(document).ready(function() {
-      $("#button_1").click(function(e) {
-    e.preventDefault();
-    var empname = $("#field1").val();
-     console.log(name);
-    var phone = $("#field2").val();
-     console.log(phone);
-    var address = $("#field3").val();
-     console.log(address);
-   
-   
-    var id = $("#emp_id").val();
-    console.log(id);
-    
-
-        var dataForm = 'name=' + name + '&price=' + phone + '&size=' +address+  '&id=' + id;
-  
-    $.ajax({
-        type: 'POST',
-        url: '/updateemp/'+id,
-        data: dataForm,
-        success: function(html){
-            if(html == "success"){
-               // $('#emptable').dataTable().reload();
-                $('#add_data_Modal1').modal('hide');
-                $('#add_data_Modal1').modal('toggle');
-                res.render('viewemp');
-            }
-        }
-        });
-    
-    });
-    });
-    </script>  
--->
-
-<!--<script>
-    $(document).ready(function() {
-      $("#button_1").click(function(e) {
-    e.preventDefault();
-    var name = $("#field1").val();
-    var phone = $("#field2").val();
-    var Address = $("#field3").val();
-
-   
-    var id = $("#emp_id").val();
-    
-    console.log(title);
-    var dataForm = 'name=' + name + '&phone=' + phone+ '&Address=' +Address+  '&id=' + id;
-    
-    $.ajax({
-        type: 'POST',
-        url: '/updateemp/'+id,
-        data: dataForm,
-        success: function(html){
-            if(html == "success"){
-               // $('#emptable').dataTable().reload();
-                $('#add_data_Modal1').modal('hide');
-                $('#add_data_Modal1').modal('toggle');
-                res.render('viewemp');
-            }
-        }
-        });
-    
-    });
-    });
-    </script>
-
-
-<script>
-    $(document).ready(function() {
-      $("#button_1").click(function(e) {
-    e.preventDefault();
-    var name = $("#field1").val();
-     console.log(name);
-    var phone = $("#field2").val();
-     console.log(phone);
-    var Address = $("#field3").val();
-     console.log(Address);
-    
-   
-    var id = $("#emp_id").val();
-    console.log(id);
-    
-
-        var dataForm = 'name=' + name + '&phone=' + phone + '&address=' +Address+  '&id=' + id;
-  
-    $.ajax({
-        type: 'POST',
-        url: '/updateemp/'+id,
-        data: dataForm,
-        success: function(html){
-            if(html == "success"){
-               // $('#emptable').dataTable().reload();
-                $('#add_data_Modal1').modal('hide');
-                $('#add_data_Modal1').modal('toggle');
-                res.render('viewemp');
-            }
-        }
-        });
-    
-    });
-    });
-    </script>-->
-
-
-
-
-
-
-
-
 
 <script>
 
@@ -460,26 +273,21 @@ function populateTable(){
         console.log('Unable to put data'); 
 
        
-                $.getJSON("http://localhost:3000/empdata", function(data){
+                $.getJSON("https://pizzaorderingystem.herokuapp.com/empdata", function(data){
                     console.log(data);
            
                   $.each(data, function(i, field){
 
 
                                  $('#emptable').append('<tr  ><td>'+field.name+'</td><td>'+field.cellno+
-                        '</td><td>'+field.address+'</td><td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '">View</a></td> <td><a href="#" id="btn1" class="deleteemp btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModalupdate" id="btn1"    rel="' + this._id + '" >Edit</a></td> </tr>'
+                        '</td><td>'+field.address+'</td></a></td> <td><a href="#" id="btn1" class="deleteemp btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModalupdate" id="btn1"    rel="' + this._id + '" >Edit</a></td> </tr>'
 
-
+                                                                //   <td><a href="#" class="updatecustomer btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn1"    rel="' + this._id + '">View
                    
                      
                     );
-
               
-                        });
-                     
-        
-                        
-     
+                        });           
                 })
                
             });
@@ -519,40 +327,7 @@ function populateTable(){
     });
     </script>
 
-    <!--
-
-    <script>
-$(document).ready(function() {
-  $("#button_1").click(function(e) {
-e.preventDefault();
-var name = $("#field1").val();
-    var phone = $("#field2").val();
-    var Address = $("#field3").val();
-
-   
-    var id = $("#emp_id").val();
-console.log(title);
-var dataForm = 'name=' + name + '&phone=' + phone+ '&address=' +address+ '&id=' + id;
-
-$.ajax({
-    type: 'POST',
-    url: '/updateemp/'+id,
-    data: dataForm,
-    success: function(html){
-        if(html == "success"){
-           // $('#emptable').dataTable().reload();
-            $('#add_data_Modal1').modal('hide');
-            $('#add_data_Modal1').modal('toggle');
-            res.render('viewemp');
-        }
-    }
-    });
-
-});
-});
-</script>
-
--->
+    
 <script>
 
      
@@ -560,7 +335,7 @@ $.ajax({
   
     event.preventDefault();
   
-    var dmJSON = "http://localhost:3000/empdata";
+    var dmJSON = "https://pizzaorderingystem.herokuapp.com/empdata";
     var emp_id = $(this).attr('rel'); 
     data = {emp_id:emp_id}
   
